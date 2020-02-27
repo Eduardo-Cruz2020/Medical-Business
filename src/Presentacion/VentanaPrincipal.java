@@ -28,6 +28,16 @@ public class VentanaPrincipal extends JFrame {
 
 	private JButton jButtonInfoProductoManufacturado = null;
 
+	private JButton jButtonventas = null;
+
+	private JButton jButtonpedidos = null;
+
+	private JButton jButtonalmacenMateriaPrima = null;
+
+	private JButton jButtonmaterialSaliente = null;
+
+	private JButton jButtonproductoTerminado = null;
+
 	private JButton jButtonSalir = null;
 	
 	private ControlPrincipal control;
@@ -48,7 +58,7 @@ public class VentanaPrincipal extends JFrame {
 	 * @return void
 	 */
 	private void initialize() {
-		this.setSize(445, 274);
+		this.setSize(460, 380);
 		this.setContentPane(getJContentPane());
 		this.setTitle("JFrame");
 	}
@@ -72,6 +82,11 @@ public class VentanaPrincipal extends JFrame {
 			jContentPane.add(getJButtonInfoMateriaPrima(), null);
 			jContentPane.add(getJButtonInfoProductoManufacturado(), null);
 			jContentPane.add(getJButtonSalir(), null);
+			jContentPane.add(getJButtonproductoTerminado(), null);
+			jContentPane.add(getJButtonpedidos(), null);
+			jContentPane.add(getJButtonmaterialSaliente(), null);
+			jContentPane.add(getJButtonventas(), null);
+			jContentPane.add(getJButtonalmacenMateriaPrima(), null);
 		}
 		return jContentPane;
 	}
@@ -122,7 +137,7 @@ public class VentanaPrincipal extends JFrame {
 	private JButton getJButtonInfoMateriaPrima() {
 		if (jButtonInfoMateriaPrima == null) {
 			jButtonInfoMateriaPrima = new JButton();
-			jButtonInfoMateriaPrima.setBounds(new Rectangle(240, 90, 166, 31));
+			jButtonInfoMateriaPrima.setBounds(new Rectangle(240, 90, 181, 31));
 			jButtonInfoMateriaPrima.setText("Regitro Materia Prima");
 			jButtonInfoMateriaPrima.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
@@ -142,7 +157,7 @@ public class VentanaPrincipal extends JFrame {
 	private JButton getJButtonInfoProductoManufacturado() {
 		if (jButtonInfoProductoManufacturado == null) {
 			jButtonInfoProductoManufacturado = new JButton();
-			jButtonInfoProductoManufacturado.setBounds(new Rectangle(240, 135, 166, 31));
+			jButtonInfoProductoManufacturado.setBounds(new Rectangle(240, 135, 181, 31));
 			jButtonInfoProductoManufacturado.setText("Registro P-Manufacturado");
 			jButtonInfoProductoManufacturado.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
@@ -153,9 +168,105 @@ public class VentanaPrincipal extends JFrame {
 		}
 		return jButtonInfoProductoManufacturado;
 	}
+	
+	/**
+	 * This method initializes jButtonventas	
+	 * 	
+	 * @return javax.swing.JButton	
+	 */
+
+	private JButton getJButtonventas() {
+		if (jButtonventas == null) {
+			jButtonventas = new JButton();
+			jButtonventas.setBounds(new Rectangle(30, 180, 181, 32));
+			jButtonventas.setText("Ventas");
+			jButtonventas.addActionListener(new java.awt.event.ActionListener() {
+				public void actionPerformed(java.awt.event.ActionEvent e) {
+				//	control.termina();
+				}
+			});
+		}
+		return jButtonventas;
+	}
+	/**
+	 * This method initializes jButtonpedidos
+	 * 	
+	 * @return javax.swing.JButton	
+	 */
+
+	private JButton getJButtonpedidos() {
+		if (jButtonpedidos == null) {
+			jButtonpedidos = new JButton();
+			jButtonpedidos.setBounds(new Rectangle(240, 180, 181, 32));
+			jButtonpedidos.setText("Pedidos");
+			jButtonpedidos.addActionListener(new java.awt.event.ActionListener() {
+				public void actionPerformed(java.awt.event.ActionEvent e) {
+					//control.termina();
+				}
+			});
+		}
+		return jButtonpedidos;
+	}
+	/**
+	 * This method initializes jButtonalmacenMateriaPrima	
+	 * 	
+	 * @return javax.swing.JButton	
+	 */
+
+	private JButton getJButtonalmacenMateriaPrima() {
+		if (jButtonalmacenMateriaPrima == null) {
+			jButtonalmacenMateriaPrima = new JButton();
+			jButtonalmacenMateriaPrima.setBounds(new Rectangle(30, 225, 181, 32));
+			jButtonalmacenMateriaPrima.setText("M.Prima (Almacen)");
+			jButtonalmacenMateriaPrima.addActionListener(new java.awt.event.ActionListener() {
+				public void actionPerformed(java.awt.event.ActionEvent e) {
+					//control.termina();
+				}
+			});
+		}
+		return jButtonalmacenMateriaPrima;
+	}
+	/**
+	 * This method initializes jButtonproductoTerminado
+	 * 	
+	 * @return javax.swing.JButton	
+	 */
+
+	private JButton getJButtonproductoTerminado() {
+		if (jButtonproductoTerminado == null) {
+			jButtonproductoTerminado = new JButton();
+			jButtonproductoTerminado.setBounds(new Rectangle(240, 225, 181, 32));
+			jButtonproductoTerminado.setText("Producto Terminado");
+			jButtonproductoTerminado.addActionListener(new java.awt.event.ActionListener() {
+				public void actionPerformed(java.awt.event.ActionEvent e) {
+					//control.termina();
+				}
+			});
+		}
+		return jButtonproductoTerminado;
+	}
+	/**
+	 * This method initializes jButtonmaterialSaliente
+	 * 	
+	 * @return javax.swing.JButton	
+	 */
+
+	private JButton getJButtonmaterialSaliente() {
+		if (jButtonmaterialSaliente == null) {
+			jButtonmaterialSaliente = new JButton();
+			jButtonmaterialSaliente.setBounds(new Rectangle(30, 270, 181, 32));
+			jButtonmaterialSaliente.setText("Material Saliente");
+			jButtonmaterialSaliente.addActionListener(new java.awt.event.ActionListener() {
+				public void actionPerformed(java.awt.event.ActionEvent e) {
+				//	control.termina();
+				}
+			});
+		}
+		return jButtonmaterialSaliente;
+	}
 
 	/**
-	 * This method initializes jButtonInfoProductoManufacturado	
+	 * This method initializes jButtonSalir	
 	 * 	
 	 * @return javax.swing.JButton	
 	 */
@@ -163,7 +274,7 @@ public class VentanaPrincipal extends JFrame {
 	private JButton getJButtonSalir() {
 		if (jButtonSalir == null) {
 			jButtonSalir = new JButton();
-			jButtonSalir.setBounds(new Rectangle(135, 180, 167, 32));
+			jButtonSalir.setBounds(new Rectangle(240, 270, 181, 32));
 			jButtonSalir.setText("Salir");
 			jButtonSalir.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
