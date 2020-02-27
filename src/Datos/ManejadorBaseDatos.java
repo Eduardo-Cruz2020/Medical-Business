@@ -3,7 +3,6 @@ package Datos;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.Properties;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
@@ -18,52 +17,40 @@ public class ManejadorBaseDatos {
 	static Logger log = Logger.getRootLogger();
 	
 	// Referencia a la instancia unica del manejador de la BD
-	private static ManejadorBaseDatos m_manejador = null;
-
-	// Informacion del driver
-	private static String framework = "embedded";
-	private static String driver = "org.apache.derby.jdbc.EmbeddedDriver";
-	private static String protocol = "jdbc:derby:";
-	
-	// Nombre de la base de datos
-	private String m_nombreBD = "BaseDeDatos";
-	
+	private static ManejadorBaseDatos manejador = null;
 	// La conexion
-	private Connection m_conexion = null;
-
+	private Connection conn = null;
+	
 	static {
 		PropertyConfigurator.configure("res/log4j_config.properties");
 	}
+	
+	private static final String driver ="com.mysql.jdbc.Driver"; 
+	private static final String user="root";
+	private static final String password="";
+	private static final String url = "jdbc:mysql://localhost:3306/sunsystem";
+	
 	
 	/**
 	 * Este manejador implementa el patron Singleton, por ello el constructor es privado
 	 */
 	private ManejadorBaseDatos() throws DatabaseException
 	{
-
+		super();
 		try
 		{
 	        /*
 	           La instalacion del driver ocurre cuando se carga la clase
 	           en un entorno embebido esto inicia a Derby ya que no esta ejecutandose
-	         */			
-	        Class.forName(driver).newInstance();
-	        /*Class.forName(driver).newInstance();
-	*/
-	        // Se puede especificar un usuario y un password
-	        Properties props = new Properties();
-	        //props.put("user", "user1");
-	        //props.put("password", "user1");
-	
-	        /*
-	           En la conexion se especifica create=true para crear la base de datos
-	           la base de datos se crea bajo el directorio actual. Para borrarla,
-	           basta borrar el directorio que se creo.
-	         */
-	        m_conexion = DriverManager.getConnection(protocol + m_nombreBD+ ";create=true", props);
-	
+	         */	
+			Class.forName(driver);
+			
+
+			conn = DriverManager.getConnection(url, user, password);
+			if(conn!=null)
+				System.out.println("Acceso a la base de datos exitoso!");	       
 	        // AutoCommit = true para que los cambios se repercutan inmediatamente.
-	        m_conexion.setAutoCommit(true);
+	        conn.setAutoCommit(true);
 		}
 		catch(Exception ex)
 		{
@@ -84,13 +71,13 @@ public class ManejadorBaseDatos {
 	 */
 	public static Connection getConnection() throws DatabaseException
 	{
-		if (m_manejador == null)
+		if (manejador == null)
 		{
-			m_manejador = new ManejadorBaseDatos();
+			manejador = new ManejadorBaseDatos();
 			log.info("El manejador de la base de datos ha sido creado");
 		}
 		
-		return m_manejador.m_conexion;
+		return manejador.conn;
 	}
 	
 	/**
@@ -103,7 +90,7 @@ public class ManejadorBaseDatos {
 		log.info("Apagando base de datos...");
 
 		// Si nunca se creo el manejador no hay necesidad de apagarlo...
-		if (m_manejador == null)
+		if (manejador == null)
 		{
 			return;
 		}
@@ -112,43 +99,13 @@ public class ManejadorBaseDatos {
 		try
 		{
 			// Se cierra la conexion
-			m_manejador.m_conexion.close();
+			manejador.conn.close();
 		}
 		catch(SQLException ex)
 		{
 			log.error(ex);
 		}
 
-        /*
-           In embedded mode, an application should shut down Derby.
-           If the application fails to shut down Derby explicitly,
-           the Derby does not perform a checkpoint when the JVM shuts down, which means
-           that the next connection will be slower.
-           Explicitly shutting down Derby with the URL is preferred.
-           This style of shutdown will always throw an "exception".
-         */
-        boolean gotSQLExc = false;
-
-        if (framework.equals("embedded"))
-        {
-            try
-            {
-                DriverManager.getConnection(protocol+";shutdown=true");
-            }
-            catch (SQLException se)
-            {
-                gotSQLExc = true;
-            }
-
-            if (!gotSQLExc)
-            {
-                log.warn("La base de datos no se apago de forma normal");
-            }
-            else
-            {
-                log.info("La base de datos se apago normalmente");
-            }
-        }
     }
 	
 }

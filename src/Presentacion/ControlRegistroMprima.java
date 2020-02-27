@@ -38,10 +38,6 @@ public class ControlRegistroMprima {
 		
 	}
 
-	public void eliminaProducto() {
-		
-	}
-
 	public void AgregaNuevo(String nombre, int id, double precio) {
 		// 3.- El usuario introduce los datos del producto munufacturado
 

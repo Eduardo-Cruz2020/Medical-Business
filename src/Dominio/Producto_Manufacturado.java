@@ -2,7 +2,7 @@ package Dominio;
 
 public class Producto_Manufacturado {
 	
-	public Producto_Manufacturado(int id, String tipo, String descripcion, double costo, String nombre) {
+	public Producto_Manufacturado(Integer id, String tipo, String descripcion, Double costo, String nombre) {
 		super();
 		Id = id;
 		Tipo = tipo;
@@ -13,10 +13,10 @@ public class Producto_Manufacturado {
 	public Producto_Manufacturado() {
 		// TODO Auto-generated constructor stub
 	}
-	private int Id;
+	private Integer Id;
 	private String Tipo;
 	private String Descripcion;
-	private double Costo;
+	private Double Costo;
 	private String Nombre;
 	
 	public String getNombre() {
@@ -25,7 +25,7 @@ public class Producto_Manufacturado {
 	public void setNombre(String nombre) {
 		Nombre = nombre;
 	}
-	public int getId() {
+	public Integer getId() {
 		return Id;
 	}
 	public void setId(int id_Manufacturado) {
@@ -43,7 +43,7 @@ public class Producto_Manufacturado {
 	public void setDescripcion(String descripcion) {
 		Descripcion = descripcion;
 	}
-	public double getCosto() {
+	public Double getCosto() {
 		return Costo;
 	}
 	public void setCosto(double costo) {

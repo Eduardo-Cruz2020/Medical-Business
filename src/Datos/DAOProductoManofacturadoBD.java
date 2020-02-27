@@ -29,14 +29,7 @@ public class DAOProductoManofacturadoBD implements DAOProductoManofacturado{
 			Statement statement = ManejadorBaseDatos.getConnection().createStatement();
 					
 			// Ejecuta la instruccion
-			statement.execute("INSERT INTO ProductoManofacturado VALUES (DEFAULT,'"+productoManofacturado.getId()+"','"+productoManofacturado.getNombre()+"','"+productoManofacturado.getTipo()+"','"+productoManofacturado.getDescripcion()+"','"+productoManofacturado.getCosto()+"')",Statement.RETURN_GENERATED_KEYS);
-			ResultSet rs = statement.getGeneratedKeys(); // Recupera la llave
-			if (rs != null && rs.next()) {
-			    int llave = rs.getInt(1);
-			    productoManofacturado.setId(llave); // Asigna la llave al libor
-			}
-				
-					
+			statement.execute("INSERT INTO ProductoManufacturado VALUES ('"+productoManofacturado.getId()+"','"+productoManofacturado.getNombre()+"','"+productoManofacturado.getTipo()+"','"+productoManofacturado.getDescripcion()+"','"+productoManofacturado.getCosto()+"')");	
 			return true;
 		} catch (SQLException e) {
 			
@@ -127,9 +120,10 @@ public class DAOProductoManofacturadoBD implements DAOProductoManofacturado{
 				Producto_Manufacturado product = new Producto_Manufacturado();
 				product.setId(Integer.parseInt(rs.getString("Id")));
 				product.setNombre(rs.getString("Nombre"));
-
-				productos.add(product);
-			}
+				product.setNombre(rs.getString("Tipo"));
+				product.setNombre(rs.getString("Descripcion"));
+				product.setCosto(Double.parseDouble(rs.getString("Costo")));
+				productos.add(product);			}
 			
 		}catch(SQLException e){
 			e.printStackTrace();
@@ -155,7 +149,7 @@ try{
 			Statement statement = ManejadorBaseDatos.getConnection().createStatement();
 
 			// Recibe los resutados
-			statement.execute("DELETE FROM Producto_Manufacturado WHERE Id = '"+id+"'");
+			statement.execute("DELETE FROM ProductoManufacturado WHERE Id = '"+id+"'");
 
 			
 			return true;

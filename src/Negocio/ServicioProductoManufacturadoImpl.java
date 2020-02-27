@@ -12,7 +12,6 @@ public class ServicioProductoManufacturadoImpl implements ServicioProductoManufa
 	ArrayList<Producto_Manufacturado> productos ; 
 
 	public ServicioProductoManufacturadoImpl(DAOProductoManofacturado daoProductoManufacturado) {
-		// TODO Auto-generated constructor stub
 		// creamos conexion al DAO
 		DAOProducto = daoProductoManufacturado;
 	}
@@ -47,17 +46,11 @@ public class ServicioProductoManufacturadoImpl implements ServicioProductoManufa
 	}
  
 	public boolean eliminaRegistro(int Id) {
-		if (verificaID(Id)!=false) {
+		if (verificaID(Id) == true ) {
 		return false;
 		}
 		DAOProducto.borra(Id);
 		return true;
-	}
-
-	@Override
-	public ArrayList<Producto_Manufacturado> productos() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }

@@ -2,10 +2,15 @@ package Presentacion;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+
+import Dominio.Producto_Manufacturado;
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import java.awt.Rectangle;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 import Presentacion.ControlRegistroPmanufacturado;
 
@@ -20,6 +25,11 @@ public class VentanaRegistroProductoManufacturado extends JFrame {
 
 	private JButton jButtonEliminarProducto = null;
 	
+	ArrayList <Producto_Manufacturado> productos= new ArrayList<Producto_Manufacturado>();
+	Producto_Manufacturado product=null;
+
+
+	
 	private JTextArea jTextArea = null;
 	private JLabel etiqueta = null;
 
@@ -29,11 +39,12 @@ public class VentanaRegistroProductoManufacturado extends JFrame {
 	/**
 	 * This is the default constructor
 	 */
-	public VentanaRegistroProductoManufacturado(ControlRegistroPmanufacturado control) {
+	public VentanaRegistroProductoManufacturado(ControlRegistroPmanufacturado control,ArrayList <Producto_Manufacturado> productos) {
 		super();
+		this.control = control;
+		this.productos = productos;
 		initialize();
 		setLocationRelativeTo(null);
-		this.control = control;
 	}
 
 	/**
@@ -54,7 +65,6 @@ public class VentanaRegistroProductoManufacturado extends JFrame {
 	 */
 	private JPanel getJContentPane() {
 		if (jContentPane == null) {
-			jTextArea = new JTextArea();
 
 			
 			jContentPane = new JPanel();
@@ -114,10 +124,17 @@ public class VentanaRegistroProductoManufacturado extends JFrame {
 	}
 	
 	private JTextArea getJTextArea() {
-		
-		jTextArea.setEditable(false);		
+		jTextArea = new JTextArea();
+
+		jTextArea.setEditable(true);		
 		jTextArea.setBounds(new Rectangle(50,50,370,320));
-		return jTextArea;	
+		Iterator<Producto_Manufacturado> it = productos.iterator();
+		while(it.hasNext()){
+		    Producto_Manufacturado producto = it.next();
+		    jTextArea.setText("Nonmbre: " + producto.getNombre() + " , Costo: " + producto.getCosto()+ ", tipo: " + 
+		    producto.getTipo()+"\nDescripción: "+ producto.getDescripcion());
+		}
+			return jTextArea;	
 	}
 
 	public void abre() {
