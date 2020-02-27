@@ -55,7 +55,7 @@ public class VentanaRegistroProductoManufacturado extends JFrame {
 	private void initialize() {
 		this.setSize(500, 500);
 		this.setContentPane(getJContentPane());
-		this.setTitle("Lista de productos manufacturados");
+		this.setTitle("Registro de material transformado en producto final");
 	}
 
 	/**
@@ -71,8 +71,8 @@ public class VentanaRegistroProductoManufacturado extends JFrame {
 			jContentPane.setLayout(null);
 			
 			etiqueta = new JLabel();
-			etiqueta.setText("Lista de productos manufacturados");
-			etiqueta.setBounds(new Rectangle(150,-50,180,150));
+			etiqueta.setText("Lista de productos terminados");
+			etiqueta.setBounds(new Rectangle(150,-50,230,150));
 			
 			jContentPane.add(etiqueta,null);
 
@@ -93,7 +93,7 @@ public class VentanaRegistroProductoManufacturado extends JFrame {
 	private JButton getJButtonAgregarNuevo() {
 		if (jButtonAgregarNuevo == null) {
 			jButtonAgregarNuevo = new JButton();
-			jButtonAgregarNuevo.setBounds(new Rectangle(100, 400, 100, 40));
+			jButtonAgregarNuevo.setBounds(new Rectangle(70, 400, 150, 40));
 			jButtonAgregarNuevo.setText("Agregar Nuevo");
 			jButtonAgregarNuevo.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
@@ -112,7 +112,7 @@ public class VentanaRegistroProductoManufacturado extends JFrame {
 	private JButton getJButtonEliminarProducto() {
 		if (jButtonEliminarProducto == null) {
 			jButtonEliminarProducto = new JButton();
-			jButtonEliminarProducto.setBounds(new Rectangle(280, 400, 100, 40));
+			jButtonEliminarProducto.setBounds(new Rectangle(250, 400, 150, 40));
 			jButtonEliminarProducto.setText("Eliminar Producto");
 			jButtonEliminarProducto.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
@@ -131,8 +131,7 @@ public class VentanaRegistroProductoManufacturado extends JFrame {
 		Iterator<Producto_Manufacturado> it = productos.iterator();
 		while(it.hasNext()){
 		    Producto_Manufacturado producto = it.next();
-		    jTextArea.setText("Nonmbre: " + producto.getNombre() + " , Costo: " + producto.getCosto()+ ", tipo: " + 
-		    producto.getTipo()+"\nDescripción: "+ producto.getDescripcion());
+		    jTextArea.setText("Nonmbre: " + producto.getNombre() + " Cantidad: " + producto.getCantidad());
 		}
 			return jTextArea;	
 	}

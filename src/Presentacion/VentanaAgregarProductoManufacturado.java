@@ -193,7 +193,7 @@ public class VentanaAgregarProductoManufacturado extends JFrame {
 					String tipo = jTextFieldTipo.getText();
 					Integer id = Integer.parseInt(jTextFieldId.getText());
 					Double precio = Double.parseDouble(jTextFieldPrecio.getText());
-						control.AgregaNuevo(nombre, descripcion, tipo, id, precio);
+						//control.AgregaNuevo(nombre, descripcion, tipo, id, precio);
 				}
 			});
 		}

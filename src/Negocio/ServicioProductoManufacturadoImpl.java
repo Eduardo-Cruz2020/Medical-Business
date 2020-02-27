@@ -24,9 +24,9 @@ public class ServicioProductoManufacturadoImpl implements ServicioProductoManufa
 	 * Si el ID que recibe este método no esta registrado, crea una
 	 *  nueva instancia y llama al DAO para que la agregue a la base de datos.
 	 */
-	public boolean generaRegistro(int Id, String descripcion, String nombre, String tipo, double costo ) {
+	public boolean generaRegistro(int Id, String descripcion,int cantidad, String nombre, String tipo, double costo ) {
 		if(verificaID(Id)==true) {
-		producto = new Producto_Manufacturado(Id, tipo, descripcion, costo, nombre);
+		producto = new Producto_Manufacturado(Id, tipo, descripcion, costo, nombre, cantidad);
 		DAOProducto.crea(producto);
 		return true;
 		}

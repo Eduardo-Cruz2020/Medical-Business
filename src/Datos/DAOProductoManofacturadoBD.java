@@ -61,11 +61,11 @@ public class DAOProductoManofacturadoBD implements DAOProductoManofacturado{
 				Producto_Manufacturado producto= new Producto_Manufacturado();
 				
 				producto.setId(Integer.parseInt(rs.getString("Id")));
-				producto.setCosto(Double.parseDouble(rs.getString("Costo")));
 				producto.setNombre(rs.getString("Nombre"));
 				producto.setTipo(rs.getString("Tipo"));
 				producto.setDescripcion(rs.getString("Descripcion"));
-					}
+				producto.setCosto(Double.parseDouble(rs.getString("Costo")));
+				producto.setCantidad(Integer.parseInt(rs.getString("Id")));}
 			
 			return productoManofacturado;
 		}catch(SQLException e){

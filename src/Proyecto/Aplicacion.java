@@ -12,6 +12,7 @@ import Negocio.ServicioRamallmpl;
 import Presentacion.ControlPrincipal;
 import Presentacion.ControlRegistroC_Cliente;
 import Presentacion.ControlRegistroPmanufacturado;
+import Presentacion.ControlRegistroPterminado;
 import Presentacion.ControlRegistroRamales;
 import Datos.DAOCliente;
 import Datos.DAOClienteBD;
@@ -50,6 +51,8 @@ public class Aplicacion {
 	private static ControlRegistroRamales controlRegistroRamales;
 	private static DAORamal daoRamal;
 	private static ServicioRamal servicioRamal;
+	
+	private static ControlRegistroPterminado controlPterminado;
 	/**
 	 * Arranca la aplicacion
 	 * 
@@ -84,8 +87,10 @@ public class Aplicacion {
 		servicioRamal = new ServicioRamallmpl(daoRamal);
 		controlRegistroRamales = new ControlRegistroRamales(servicioRamal);
 		
+		controlPterminado = new ControlRegistroPterminado(servicioProductoManufacturado);
+		
 		controlPrincipal = new ControlPrincipal(controlRegistropManufacturado, controlRegistroMprima,
-				controlRegistroC_Cliente,controlRegistroRamales);
+				controlRegistroC_Cliente,controlRegistroRamales, controlPterminado);
 
 		/*controlPrincipal = new ControlPrincipal(controlRegistroMprima);*/
 

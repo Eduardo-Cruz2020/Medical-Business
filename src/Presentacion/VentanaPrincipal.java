@@ -239,7 +239,7 @@ public class VentanaPrincipal extends JFrame {
 			jButtonproductoTerminado.setText("Producto Terminado");
 			jButtonproductoTerminado.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
-					//control.termina();
+					control.regirstroPterminado();
 				}
 			});
 		}
