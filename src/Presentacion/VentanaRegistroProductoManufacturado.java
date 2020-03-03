@@ -71,7 +71,7 @@ public class VentanaRegistroProductoManufacturado extends JFrame {
 			jContentPane.setLayout(null);
 			
 			etiqueta = new JLabel();
-			etiqueta.setText("Lista de productos terminados");
+			etiqueta.setText("Lista de productos disponibles para su venta");
 			etiqueta.setBounds(new Rectangle(150,-50,230,150));
 			
 			jContentPane.add(etiqueta,null);
@@ -131,7 +131,8 @@ public class VentanaRegistroProductoManufacturado extends JFrame {
 		Iterator<Producto_Manufacturado> it = productos.iterator();
 		while(it.hasNext()){
 		    Producto_Manufacturado producto = it.next();
-		    jTextArea.setText("Nonmbre: " + producto.getNombre() + " Cantidad: " + producto.getCantidad());
+		    jTextArea.setText("Nonmbre: " + producto.getNombre() + " , Costo: " + producto.getCosto()+ ", tipo: " + 
+		    producto.getTipo()+"\nDescripción: "+ producto.getDescripcion());
 		}
 			return jTextArea;	
 	}
