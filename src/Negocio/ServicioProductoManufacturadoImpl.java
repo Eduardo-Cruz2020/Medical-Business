@@ -24,7 +24,7 @@ public class ServicioProductoManufacturadoImpl implements ServicioProductoManufa
 	 * Si el ID que recibe este método no esta registrado, crea una
 	 *  nueva instancia y llama al DAO para que la agregue a la base de datos.
 	 */
-	public boolean generaRegistro(int Id, String descripcion,int cantidad, String nombre, String tipo, double costo ) {
+	public boolean generaRegistro(int Id, String nombre,int cantidad, String tipo, String descripcion, double costo ) {
 		if(verificaID(Id)==true) {
 		producto = new Producto_Manufacturado(Id, tipo, descripcion, costo, nombre, cantidad);
 		DAOProducto.crea(producto);
@@ -46,11 +46,20 @@ public class ServicioProductoManufacturadoImpl implements ServicioProductoManufa
 	}
  
 	public boolean eliminaRegistro(int Id) {
-		if (verificaID(Id) == true ) {
+		if (verificaID(Id))
 		return false;
-		}
 		DAOProducto.borra(Id);
 		return true;
 	}
+
+	public boolean actualizaCantidad(int id, int cantidad) {
+		// TODO Auto-generated method stub
+		if (verificaID(id))
+		return false;
+		DAOProducto.actualizaCantidad(id, cantidad);
+		return true;
+	}
+
+
 
 }

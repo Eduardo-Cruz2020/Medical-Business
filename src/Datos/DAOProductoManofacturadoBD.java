@@ -29,7 +29,7 @@ public class DAOProductoManofacturadoBD implements DAOProductoManofacturado{
 			Statement statement = ManejadorBaseDatos.getConnection().createStatement();
 					
 			// Ejecuta la instruccion
-			statement.execute("INSERT INTO ProductoManufacturado VALUES ('"+productoManofacturado.getId()+"','"+productoManofacturado.getNombre()+"','"+productoManofacturado.getTipo()+"','"+productoManofacturado.getDescripcion()+"','"+productoManofacturado.getCosto()+"')");	
+			statement.execute("INSERT INTO ProductoManufacturado VALUES ('"+productoManofacturado.getId()+"','"+productoManofacturado.getNombre()+"','"+productoManofacturado.getTipo()+"','"+productoManofacturado.getDescripcion()+"','"+productoManofacturado.getCosto()+"','"+productoManofacturado.getCantidad()+"')");	
 			return true;
 		} catch (SQLException e) {
 			
@@ -37,7 +37,6 @@ public class DAOProductoManofacturadoBD implements DAOProductoManofacturado{
 			e.printStackTrace();
 			return false;
 		}
-
 	}
 	
 	/**
@@ -112,7 +111,7 @@ public class DAOProductoManofacturadoBD implements DAOProductoManofacturado{
 			Statement statement = ManejadorBaseDatos.getConnection().createStatement();
 
 			// Recibe los resutados
-			ResultSet rs = statement.executeQuery("SELECT *FROM ProductoManufacturado");
+			ResultSet rs = statement.executeQuery("SELECT * FROM ProductoManufacturado");
 
 			
 			while(rs.next())
@@ -120,10 +119,13 @@ public class DAOProductoManofacturadoBD implements DAOProductoManofacturado{
 				Producto_Manufacturado product = new Producto_Manufacturado();
 				product.setId(Integer.parseInt(rs.getString("Id")));
 				product.setNombre(rs.getString("Nombre"));
-				product.setNombre(rs.getString("Tipo"));
-				product.setNombre(rs.getString("Descripcion"));
+				product.setTipo(rs.getString("Tipo"));
+				product.setDescripcion(rs.getString("Descripcion"));
 				product.setCosto(Double.parseDouble(rs.getString("Costo")));
-				productos.add(product);			}
+				product.setCantidad(Integer.parseInt(rs.getString("Cantidad")));
+
+				productos.add(product);			
+			}
 			
 		}catch(SQLException e){
 			e.printStackTrace();
@@ -132,16 +134,7 @@ public class DAOProductoManofacturadoBD implements DAOProductoManofacturado{
 		return productos;
 
 	}	
-	
-	/**
-	 * 
-	 */
-	public boolean actualiza(Producto_Manufacturado productoManofacturado) {
-		// FALTA IMPLEMENTARLO
-		return true;
-	}
 
-	
 	public boolean borra(int id) {
 		// TODO Auto-generated method stub
 try{			
@@ -159,6 +152,24 @@ try{
 			return false;
 		}
 
+	}
+
+	@Override
+	public boolean actualizaCantidad(int id, int cantidad) {
+		// TODO Auto-generated method stub
+		try {
+			// Crea la instruccion
+			Statement statement = ManejadorBaseDatos.getConnection().createStatement();
+					
+			// Ejecuta la instruccion
+			statement.execute("UPDATE ProductoManufacturado SET cantidad = cantidad + '"+cantidad+"' WHERE id = '"+id+"'");	
+			return true;
+		} catch (SQLException e) {
+			
+			// Cacha excepcion
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 }

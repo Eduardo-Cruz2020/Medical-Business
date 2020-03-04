@@ -35,13 +35,6 @@ public class ControlRegistroPmanufacturado {
 		ventana2 = new VentanaAgregarProductoManufacturado(this);
 		ventana2.setVisible(true);
 	}
-	public void AgregaNuevo() {
-		
-	}
-
-	public void eliminaProducto() {
-		
-	}
 
 	public void AgregaNuevo(String nombre, String descripcion,int cantidad, String tipo, int id, double precio) {
 		// 3.- El usuario introduce los datos del producto munufacturado

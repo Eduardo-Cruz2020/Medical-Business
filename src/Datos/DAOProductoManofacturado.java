@@ -34,7 +34,8 @@ public interface DAOProductoManofacturado {
 	 * @param libro
 	 * @return true si se actualizo correctamente, false si no
 	 */
-	public boolean actualiza(Producto_Manufacturado productoManofacturado);
+	public boolean actualizaCantidad(int id, int cantidad
+			);
 
 	/**
 	 * Retira un venta

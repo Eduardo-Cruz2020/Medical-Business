@@ -1,30 +1,26 @@
 package Presentacion;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-
-import Dominio.Producto_Manufacturado;
-
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 
 import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import Presentacion.ControlRegistroPmanufacturado;
-
 import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
 
-public class VentanaRegistroProductoManufacturado extends JFrame {
+import Dominio.Producto_Manufacturado;
+
+public class ventanaRegistroProductoTerminado extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	private JPanel jContentPane = null;
 
-	private JButton jButtonAgregarNuevo = null;
+	private JButton jButtonTerminar = null;
 
-	private JButton jButtonEliminarProducto = null;
+	private JButton jButtonAgregarNuevo = null;
 	
 	ArrayList <Producto_Manufacturado> productos= new ArrayList<Producto_Manufacturado>();
 	Producto_Manufacturado product=null;
@@ -32,16 +28,15 @@ public class VentanaRegistroProductoManufacturado extends JFrame {
 
 	
 	private JTextArea jTextArea = null;
-	JScrollPane scroll=null;
 	private JLabel etiqueta = null;
 
 
 
-	private ControlRegistroPmanufacturado control = null;
+	private ControlRegistroPterminado control = null;
 	/**
 	 * This is the default constructor
 	 */
-	public VentanaRegistroProductoManufacturado(ControlRegistroPmanufacturado control,ArrayList <Producto_Manufacturado> productos) {
+	public ventanaRegistroProductoTerminado(ControlRegistroPterminado control,ArrayList <Producto_Manufacturado> productos) {
 		super();
 		this.control = control;
 		this.productos = productos;
@@ -57,7 +52,7 @@ public class VentanaRegistroProductoManufacturado extends JFrame {
 	private void initialize() {
 		this.setSize(500, 500);
 		this.setContentPane(getJContentPane());
-		this.setTitle("Registro de productos manufacturados");
+		this.setTitle("Registro de productos terminados");
 	}
 
 	/**
@@ -73,15 +68,14 @@ public class VentanaRegistroProductoManufacturado extends JFrame {
 			jContentPane.setLayout(null);
 			
 			etiqueta = new JLabel();
-			etiqueta.setText("Lista de productos:");
-			etiqueta.setBounds(new Rectangle(150,-50,230,150));
+			etiqueta.setText("Lista de productos disponibles para su venta");
+			etiqueta.setBounds(new Rectangle(50,-50,300,150));
 			
 			jContentPane.add(etiqueta,null);
 
 			jContentPane.add(getJButtonAgregarNuevo(), null);
-			jContentPane.add(getJButtonEliminarProducto(), null);
+			jContentPane.add(getJButtonTerminar(), null);
 			jContentPane.add(getJTextArea(), null);
-			jContentPane.add(scroll, null);
 
 		}
 		return jContentPane;
@@ -100,7 +94,7 @@ public class VentanaRegistroProductoManufacturado extends JFrame {
 			jButtonAgregarNuevo.setText("Agregar Nuevo");
 			jButtonAgregarNuevo.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
-					control.MuestraVentanaAgregarProductoManufacturado();
+				control.MuestraVentanaAgregarProductoTerminado();
 				}
 			});
 		}
@@ -112,37 +106,33 @@ public class VentanaRegistroProductoManufacturado extends JFrame {
 	 * 	
 	 * @return javax.swing.JButton	
 	 */
-	private JButton getJButtonEliminarProducto() {
-		if (jButtonEliminarProducto == null) {
-			jButtonEliminarProducto = new JButton();
-			jButtonEliminarProducto.setBounds(new Rectangle(250, 400, 150, 40));
-			jButtonEliminarProducto.setText("Eliminar Producto");
-			jButtonEliminarProducto.addActionListener(new java.awt.event.ActionListener() {
+	private JButton getJButtonTerminar() {
+		if (jButtonTerminar == null) {
+			jButtonTerminar = new JButton();
+			jButtonTerminar.setBounds(new Rectangle(300, 400, 100, 40));
+			jButtonTerminar.setText("Terminar");
+			jButtonTerminar.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
-					control.MuestraVentanaEliminarProductoManufacturado();
+				cierra();
 				}
 			});
 		}
-		return jButtonEliminarProducto;
+		return jButtonTerminar;
 	}
 	
 	private JTextArea getJTextArea() {
-		jTextArea = new JTextArea(10,4);
-		String List = "";
+		jTextArea = new JTextArea();
+		String List ="    Nombre          Cantidad\n\n";
 
 		jTextArea.setEditable(true);		
 		jTextArea.setBounds(new Rectangle(50,50,370,320));
-		  scroll=new JScrollPane(jTextArea);
-
-		for (int i=0; i<productos.size();i++){
-		    Producto_Manufacturado producto = productos.get(i);
-		    List = List + "Nombre: " + producto.getNombre() + " , Costo: " + producto.getCosto()+ ", tipo: " + 
-		    producto.getTipo()+"\nDescripción: "+ producto.getDescripcion()+"\n\n";
+		Iterator<Producto_Manufacturado> it = productos.iterator();
+		while(it.hasNext()){
+		    Producto_Manufacturado producto = it.next();
+		    List = List + "    " + producto.getNombre()+ "              "+ producto.getCantidad()+"\n";
 		    jTextArea.setText(List);
 		}
-			return jTextArea;
-		
-			
+			return jTextArea;	
 	}
 
 	public void abre() {
@@ -150,7 +140,7 @@ public class VentanaRegistroProductoManufacturado extends JFrame {
 	}
 	
 	public void cierra() {
-		setVisible(false);
+		this.dispose();
 	}
 
 	

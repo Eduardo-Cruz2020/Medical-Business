@@ -14,5 +14,7 @@ public interface ServicioProductoManufacturado {
 	
 	boolean eliminaRegistro(int id);
 	
+	boolean actualizaCantidad(int id, int cantidad);
+	
 
 }

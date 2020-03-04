@@ -2,7 +2,7 @@ package Dominio;
 
 public class Producto_Manufacturado {
 	
-	public Producto_Manufacturado(Integer id, String tipo, String descripcion, Double costo, String nombre, int cantidad) {
+	public Producto_Manufacturado(Integer id, String nombre, String tipo, Double costo, String descripcion, int cantidad) {
 		super();
 		Id = id;
 		Tipo = tipo;

@@ -135,7 +135,7 @@ public class VentanaEliminarProductoManufacturado extends JFrame {
 	}
 	
 	public void cierra() {
-		setVisible(false);
+		this.dispose();
 	}
 
 	
