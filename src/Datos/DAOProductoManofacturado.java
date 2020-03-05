@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import Dominio.Producto_Manufacturado;
 
 /**
- * DAO Para la entidad ventas
+ * DAO Para la entidad ProductoManufacturado
  * 
  * @author Eduardo
  *
@@ -13,46 +13,32 @@ import Dominio.Producto_Manufacturado;
 public interface DAOProductoManofacturado {
 	
 	/**
-	 * Este metodo permite agregar una venta
+	 * Este metodo permite agregar un producto a la base de datos
 	 * 
-	 * @param venta
-	 * @return true si se creo exitosamente, false sino
+	 * @param libro el producto a agregar
+	 * @return true si se creo exitosamente, false si no
 	 */
 	public boolean crea(Producto_Manufacturado productoManofacturado);
 	
 	/**
-	 * Este metodo crea venta a partir de su nombre
-	 * 
-	 * @param nombre el nombre del venta a buscar
-	 * @return una referencia al venta o null si no se encontro
+	 * Actuliza la cantidad de productos disponibles
+	 * @param la cantidad de productos a modificar
+	 * @return true si el producto fue actualizado exitosamente
 	 */
-	public Producto_Manufacturado recupera(int Id_Manofacturado);
+	public boolean actualizaCantidad(int id, int cantidad);
 	
 	/**
-	 * Actualiza  Ventas
+	 * Regresa la lista de todos los productos
 	 * 
-	 * @param libro
-	 * @return true si se actualizo correctamente, false si no
-	 */
-	public boolean actualizaCantidad(int id, int cantidad
-			);
-
-	/**
-	 * Retira un venta
-	 * 
-	 * @param venta de la venta  a retirar
-	 * @return true si se retiro exitosamente, false sino
-	 */
-	public boolean borra(Producto_Manufacturado productoManofacturado);
-	
-	/**
-	 * Regresa la lista de todas las ventas
-	 * 
-	 * @return un ArrayList con todos los libros de la libreria
+	 * @return un ArrayList con todos los productos disponibles
 	 */
 	public ArrayList<Producto_Manufacturado> recuperaTodos();
-
+	
+	/**
+	 * Elimina un producto de la base de datos mediante su identificador
+	 * @param El identificador del producto a eliminar
+	 * @return true si el producto fue borrado exitosamente
+	 */
 	public boolean borra(int id);
 
-
-}
+} //Fin de la clase

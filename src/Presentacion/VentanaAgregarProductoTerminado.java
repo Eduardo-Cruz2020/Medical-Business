@@ -10,23 +10,25 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+/**
+ * Ventana de apoyo para la HU-22
+ */
 public class VentanaAgregarProductoTerminado extends JFrame {
 	private static final long serialVersionUID = 1L;
-
+	
+	//componentes de la ventana
 	private JPanel jContentPane = null;
 	private JLabel jLabel = null;
 	private JLabel jLabel1 = null;
 	private JLabel jLabel2 = null;
-
 	private JTextField jTextFielId = null;
 	private JTextField jTextFieldCantidad = null;
-
-
 	private JButton jButtonGuardarRegistro = null;
-
 	private JButton jButtonCancelar = null;
-
+	
+	//Control de la HU-22
 	private ControlRegistroPterminado control = null;
+	
 	/**
 	 * This is the default constructor
 	 */
@@ -35,7 +37,7 @@ public class VentanaAgregarProductoTerminado extends JFrame {
 		initialize();
 		setLocationRelativeTo(null);
 		this.control = control;
-	}
+	} //Fin del Constructor
 
 	/**
 	 * This method initializes this
@@ -46,7 +48,7 @@ public class VentanaAgregarProductoTerminado extends JFrame {
 		this.setSize(300, 300);
 		this.setContentPane(getJContentPane());
 		this.setTitle("Agregar nuevo registro");
-	}
+	} //Fin del metodo innitialize
 
 	/**
 	 * This method initializes jContentPane
@@ -83,10 +85,10 @@ public class VentanaAgregarProductoTerminado extends JFrame {
 			jContentPane.add(getJButtonCancelar(), null);
 		}
 		return jContentPane;
-	}
+	} //Fin del metodo getJContentPane
 
 	/**
-	 * This method initializes jTextFieldNombre	
+	 * This method initializes jTextFielId
 	 * 	
 	 * @return javax.swing.JTextField	
 	 */
@@ -96,10 +98,10 @@ public class VentanaAgregarProductoTerminado extends JFrame {
 			jTextFielId.setBounds(new Rectangle(120, 70, 137, 20));
 		}
 		return jTextFielId;
-	}
+	} //Fin del metodo getJTextFieldId
 	
 	/**
-	 * This method initializes jTextFieldTipo	
+	 * This method initializes jTextFieldCantidad	
 	 * 	
 	 * @return javax.swing.JTextField	
 	 */
@@ -109,10 +111,10 @@ public class VentanaAgregarProductoTerminado extends JFrame {
 			jTextFieldCantidad.setBounds(new Rectangle(120, 120, 138, 20));
 		}
 		return jTextFieldCantidad;
-	}
+	} //Fin del metodo getJTextFieldCantidad
 
 	/**
-	 * This method initializes jButtonAceptar	
+	 * This method initializes jButtonGuardarRegistro	
 	 * 	
 	 * @return javax.swing.JButton	
 	 */
@@ -130,7 +132,7 @@ public class VentanaAgregarProductoTerminado extends JFrame {
 			});
 		}
 		return jButtonGuardarRegistro;
-	}
+	} //Fin del metodo getJButtonGuardarRegistro
 
 	/**
 	 * This method initializes jButtonCancelar	
@@ -149,17 +151,25 @@ public class VentanaAgregarProductoTerminado extends JFrame {
 			});
 		}
 		return jButtonCancelar;
-	}
+	} //Fin del metodo getJButtonCancelar
 
+	/**
+	 * este metodo muestra esta venta 	
+	 */
 	public void abre() {
 		setVisible(true);
 	}
 	
+	/**
+	 * este metodo cierra esta ventana	
+	 */
 	public void cierra() {
 		this.dispose();
 	}
 
-	
+	/**
+	 * este metodo nos ayuda a mostrar mensajes de aceptacion o error en la interaccion del usuario con la aplicacion
+	 */
 	public void muestraMensaje(String mensaje){
 		JOptionPane.showMessageDialog(this, mensaje);
 	}
