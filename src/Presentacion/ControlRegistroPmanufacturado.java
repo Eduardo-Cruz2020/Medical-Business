@@ -35,26 +35,20 @@ public class ControlRegistroPmanufacturado {
 		ventana2 = new VentanaAgregarProductoManufacturado(this);
 		ventana2.setVisible(true);
 	}
-	public void AgregaNuevo() {
-		
-	}
 
-	public void eliminaProducto() {
-		
-	}
-
-	public void AgregaNuevo(String nombre, String descripcion, String tipo, int id, double precio) {
+	public void AgregaNuevo(String nombre, String descripcion,int cantidad, String tipo, int id, double precio) {
 		// 3.- El usuario introduce los datos del producto munufacturado
 
 				// Verifica primero que los datos no esten vacios
 				if(nombre.equals("") || descripcion.equals("") || tipo.equals("") || id==0 || precio==0 ) {
 						ventana.muestraMensaje("Los campos no deben estar vacios");	
 				} else {
+			
 					
 					System.out.println("Agregando producto: "+nombre+" del tipo:"+tipo);
 					
 					// 4.- El sistema valida y muestra un mensaje de exito
-					if(servicio.generaRegistro(id, descripcion, nombre, tipo, precio)) {
+					if(servicio.generaRegistro(id, descripcion, cantidad, nombre, tipo, precio)) {
 			        
 						ventana.muestraMensaje("Se agrego el  producto exitosamente");
 					} else {

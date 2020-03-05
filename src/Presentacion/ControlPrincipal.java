@@ -13,15 +13,17 @@ public class ControlPrincipal {
 	private ControlRegistroMprima controlRegistroMprima;
 	private ControlRegistroC_Cliente controlRegistroCliente;
 	private ControlRegistroRamales controlRegistroRamales;
+	private ControlRegistroPterminado controlTerminado;
 
 
 	
 	public ControlPrincipal(ControlRegistroPmanufacturado controlProductoManufacturado,ControlRegistroMprima controlRegistroMprima,
-			ControlRegistroC_Cliente controlRegistroCliente, ControlRegistroRamales controlRegistroRamales) {
+		ControlRegistroC_Cliente controlRegistroCliente, ControlRegistroRamales controlRegistroRamales, ControlRegistroPterminado controlTerminado) {
 		this.controlProductoManufacturado = controlProductoManufacturado;
 		this.controlRegistroMprima=controlRegistroMprima;
 		this.controlRegistroCliente = controlRegistroCliente;
 		this.controlRegistroRamales = controlRegistroRamales;
+		this.controlTerminado = controlTerminado;
 
 
 	}
@@ -54,6 +56,10 @@ public class ControlPrincipal {
 	
 	public void registroRamales() {
 		controlRegistroRamales.inicia();
+	}
+	
+	public void regirstroPterminado() {
+		controlTerminado.inicia();
 	}
 	/**
 	 * Termina la aplicación
